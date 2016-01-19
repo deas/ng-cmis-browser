@@ -1,22 +1,25 @@
 <div ng-switch on="properties['cmis:objectTypeId']">
     <div ng-switch-when="cmis:folder">
-        <h4><a href="" ng-click="click()">
+        <h5 style="display:inline-block;"><a href="" ng-click="click()">
         <span class="fa-stack fa-lg fa-fw">
           <i class="fa fa-square-o fa-stack-2x"></i>
           <i class="fa fa-folder-open fa-stack-1x"></i>
-        </span><span>{{properties['cmis:name']}}</span></a></h4>
+        </span><span>{{properties['cmis:name']}}</span></a></h5>
     </div>
     <div ng-switch-when="F:st:site">
-        <h4><a href="" ng-click="click()">
+        <h5 style="display:inline-block;"><a href="" ng-click="click()">
         <span class="fa-stack fa-lg fq-fw">
           <i class="fa fa-square-o fa-stack-2x"></i>
           <i class="fa fa-folder-open fa-stack-1x"></i>
-        </span><span>{{properties['cmis:name']}}</span></a></h4>
+        </span><span>{{properties['cmis:name']}}</span></a></h5>
     </div>
     <div ng-switch-when="cmis:document">
-        <h4><a href="{{properties['cmis:objectId'] | downloadUrl:true}}"><i class="fa fa-file fa-2x fa-fw"></i> {{properties['cmis:name']}}</a></h4>
+        <h5 style="display:inline-block;">
+            <a target="_blank" href="{{properties['cmis:objectId'] | downloadUrl:false}}"><i class="fa fa-file fa-2x fa-fw"></i> {{properties['cmis:name']}}</a>
+        </h5>
+        <a alt="Download"  style="font-size:10px;" title="Download" href="{{properties['cmis:objectId'] | downloadUrl:true}}"><i class="fa fa-download fa-2x fa-fw"></i></a>
     </div>
     <div ng-switch-default>
-        <h4>{{properties['cmis:name']}}</h4>
+        <h5>{{properties['cmis:name']}}</h5>
     </div>    
 </div>

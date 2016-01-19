@@ -1,18 +1,21 @@
 'use strict';
 
-angular.module('alfrescianCmisBrowserApp').factory('cmisService', function ($http) {
-    //var baseUrl = 'http://localhost:8080/alfresco/api/-default-/public/cmis/versions/1.1/browser/',
-	var baseUrl = 'http://cmis.alfresco.com/cmisbrowser/bb212ecb-122d-47ea-b5c1-128affb9cd8f/',
-    callback = 'callback=JSON_CALLBACK';
-
+angular.module('documentBrowserApp').factory('cmisService', function ($http) {
+    this.baseUrl = null;
+    this.alf_ticket = null;
     return {
 
         getChildren: function (path) {
-            return $http.jsonp(baseUrl + 'root/' + path + '?cmisselector=children&succinct=true&' + callback);
+            var u = this.baseUrl + 'root/' + path + '?cmisselector=children&succinct=true&callback=JSON_CALLBACK' + (this.alf_ticket ? ("&alf_ticket=" + this.alf_ticket) : "");
+            console.log(u);
+            return $http.jsonp(u);
         },
-        
+
         getBaseUrl : function(){
-            return baseUrl;
+            return this.baseUrl;
+        },
+        getAlfTicket : function(){
+            return this.alf_ticket;
         }
 
     };

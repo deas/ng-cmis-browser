@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('alfrescianCmisBrowserApp', ['ngRoute'])
+angular.module('documentBrowserApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
